@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AMBUMAD</title>
+    
+    <!-- Meta tags esenciales para PWA en iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="AMBUMAD">
+    
+    <!-- Iconos para iOS - Múltiples tamaños -->
+    <link rel="apple-touch-icon" href="https://i.ibb.co/23gbx3tw/1000225188.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://i.ibb.co/23gbx3tw/1000225188.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://i.ibb.co/23gbx3tw/1000225188.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="https://i.ibb.co/23gbx3tw/1000225188.png">
+    
+    <!-- Splash screens para iOS -->
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="https://i.ibb.co/23gbx3tw/1000225188.png">
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" href="https://i.ibb.co/23gbx3tw/1000225188.png">
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)" href="https://i.ibb.co/23gbx3tw/1000225188.png">
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" href="https://i.ibb.co/23gbx3tw/1000225188.png">
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" href="https://i.ibb.co/23gbx3tw/1000225188.png">
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" href="https://i.ibb.co/23gbx3tw/1000225188.png">
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" href="https://i.ibb.co/23gbx3tw/1000225188.png">
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" href="https://i.ibb.co/23gbx3tw/1000225188.png">
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" href="https://i.ibb.co/23gbx3tw/1000225188.png">
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" href="https://i.ibb.co/23gbx3tw/1000225188.png">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://i.ibb.co/23gbx3tw/1000225188.png">
+    
+    <!-- Manifest para PWA -->
+    <link rel="manifest" href="#" id="manifestPlaceholder">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loading-logo {
+            width: 120px;
+            height: 120px;
+            animation: pulse 1.5s infinite alternate;
+        }
+        
+        .loading-text {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #e30613;
+            font-weight: bold;
+        }
+        
+        .loading-spinner {
+            margin-top: 20px;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(227, 6, 19, 0.3);
+            border-radius: 50%;
+            border-top-color: #e30613;
+            animation: spin 1s linear infinite;
+        }
+        
+        .header {
+            background-color: #e30613;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 20px;
+            margin: 0;
+        }
+        
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .iframe-container {
+            flex: 1;
+            width: 100%;
+            position: relative;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .install-banner {
+            background-color: #fff;
+            padding: 15px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .banner-text {
+            flex: 1;
+            font-size: 14px;
+            padding-right: 10px;
+        }
+        
+        .install-btn {
+            background-color: #e30613;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        
+        .install-instructions {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 200;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+        }
+        
+        .instructions-content {
+            background-color: white;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+        
+        .close-instructions {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .step {
+            margin-bottom: 25px;
+        }
+        
+        .step-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .step-number {
+            background-color: #e30613;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 14px;
+        }
+        
+        .step-image {
+            width: 100%;
+            max-width: 300px;
+            margin: 10px auto;
+            display: block;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .highlight {
+            background-color: #ffecec;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+            color: #e30613;
+        }
+        
+        .show-instructions {
+            display: block;
+            opacity: 1;
+        }
+        
+        footer {
+            background-color: #f0f0f0;
+            padding: 10px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+        
+        /* Animaciones */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Estilos para la pantalla de instalación exitosa */
+        .success-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 300;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .success-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: white;
+        }
+        
+        .success-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #4CAF50;
+        }
+        
+        .success-message {
+            margin-bottom: 30px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .success-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Pantalla de carga -->
+    <div class="loading-screen" id="loadingScreen">
+        <img src="https://i.ibb.co/23gbx3tw/1000225188.png" alt="Logo AMBUMAD" class="loading-logo">
+        <div class="loading-text">Cargando AMBUMAD...</div>
+        <div class="loading-spinner"></div>
+    </div>
+    
+    <!-- Cabecera -->
+    <div class="header">
+        <h1>AMBUMAD</h1>
+    </div>
+    
+    <!-- Contenedor principal -->
+    <div class="content-wrapper">
+        <div class="iframe-container" id="iframeContainer">
+            <iframe src="https://animacionccoo.netlify.app/" id="contentFrame" title="AMBUMAD"></iframe>
+        </div>
+    </div>
+    
+    <!-- Banner de instalación -->
+    <div class="install-banner" id="installBanner">
+        <div class="banner-text">
+            <strong>¡Instala AMBUMAD en tu iPhone!</strong> Accede rápidamente desde tu pantalla de inicio.
+        </div>
+        <button class="install-btn" id="showInstructions">Instalar</button>
+    </div>
+    
+    <!-- Instrucciones de instalación -->
+    <div class="install-instructions" id="installInstructions">
+        <div class="instructions-content">
+            <button class="close-instructions" id="closeInstructions">&times;</button>
+            <h2 style="text-align: center; color: #e30613; margin-bottom: 20px;">Cómo instalar AMBUMAD</h2>
+            
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    Toca el icono <span class="highlight">Compartir</span>
+                </div>
+                <p>Pulsa el botón de compartir en la barra inferior de Safari</p>
+                <div style="text-align: center; margin: 15px 0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#e30613" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                        <polyline points="16 6 12 2 8 6"></polyline>
+                        <line x1="12" y1="2" x2="12" y2="15"></line>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">2</span>
+                    Selecciona <span class="highlight">Añadir a pantalla de inicio</span>
+                </div>
+                <p>Desplázate hacia abajo en el menú de opciones hasta encontrar esta opción</p>
+                <div style="text-align: center; margin: 15px 0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#e30613" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="12" y1="8" x2="12" y2="16"></line>
+                        <line x1="8" y1="12" x2="16" y2="12"></line>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    Pulsa <span class="highlight">Añadir</span>
+                </div>
+                <p>Confirma la instalación pulsando el botón en la esquina superior derecha</p>
+                <div style="text-align: center; margin: 15px 0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#e30613" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">4</span>
+                    ¡Listo!
+                </div>
+                <p>Ahora encontrarás el icono de AMBUMAD en tu pantalla de inicio</p>
+                <button class="install-btn" id="markAsInstalled" style="width: 100%; margin-top: 15px;">
+                    He completado la instalación
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Pantalla de instalación exitosa -->
+    <div class="success-screen" id="successScreen">
+        <div class="success-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </svg>
+        </div>
+        <div class="success-title">¡Instalación completada!</div>
+        <div class="success-message">
+            AMBUMAD ha sido añadida a tu pantalla de inicio.<br>
+            Ahora puedes acceder rápidamente a toda la información sindical.
+        </div>
+        <button class="success-btn" id="closeSuccess">Continuar</button>
+    </div>
+    
+    <footer>
+        &copy; 2025 Carlos AGP - Todos los derechos reservados
+    </footer>
+
+    <script>
+        // Crear el contenido del manifest dinámicamente
+        const manifestContent = {
+            "name": "AMBUMAD",
+            "short_name": "AMBUMAD",
+            "description": "Aplicación de AMBUMAD con información sindical",
+            "start_url": "./",
+            "display": "standalone",
+            "background_color": "#ffffff",
+            "theme_color": "#e30613",
+            "icons": [
+                {
+                    "src": "https://i.ibb.co/23gbx3tw/1000225188.png",
+                    "sizes": "192x192",
+                    "type": "image/png"
+                },
+                {
+                    "src": "https://i.ibb.co/23gbx3tw/1000225188.png",
+                    "sizes": "512x512",
+                    "type": "image/png"
+                }
+            ]
+        };
+        
+        // Crear un Blob con el contenido del manifest
+        const manifestBlob = new Blob([JSON.stringify(manifestContent)], {type: 'application/json'});
+        const manifestURL = URL.createObjectURL(manifestBlob);
+        
+        // Asignar la URL del Blob al enlace del manifest
+        document.getElementById('manifestPlaceholder').href = manifestURL;
+        
+        // Referencias a elementos del DOM
+        const loadingScreen = document.getElementById('loadingScreen');
+        const installBanner = document.getElementById('installBanner');
+        const showInstructions = document.getElementById('showInstructions');
+        const installInstructions = document.getElementById('installInstructions');
+        const closeInstructions = document.getElementById('closeInstructions');
+        const markAsInstalled = document.getElementById('markAsInstalled');
+        const successScreen = document.getElementById('successScreen');
+        const closeSuccess = document.getElementById('closeSuccess');
+        const contentFrame = document.getElementById('contentFrame');
+        
+        // Simular carga y ocultar pantalla de carga
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                loadingScreen.style.opacity = '0';
+                setTimeout(function() {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }, 1500);
+        });
+        
+        // Mostrar instrucciones de instalación
+        showInstructions.addEventListener('click', function() {
+            installInstructions.classList.add('show-instructions');
+        });
+        
+        // Cerrar instrucciones
+        closeInstructions.addEventListener('click', function() {
+            installInstructions.classList.remove('show-instructions');
+        });
+        
+        // Marcar como instalado
+        markAsInstalled.addEventListener('click', function() {
+            installInstructions.classList.remove('show-instructions');
+            successScreen.style.display = 'flex';
+            installBanner.style.display = 'none';
+            
+            // Guardar en localStorage que la app ha sido instalada
+            localStorage.setItem('ambumadInstalled', 'true');
+        });
+        
+        // Cerrar pantalla de éxito
+        closeSuccess.addEventListener('click', function() {
+            successScreen.style.display = 'none';
+        });
+        
+        // Comprobar si la app ya ha sido instalada
+        if (localStorage.getItem('ambumadInstalled') === 'true') {
+            installBanner.style.display = 'none';
+        }
+        
+        // Detectar si estamos en iOS y en Safari
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        
+        // Mostrar advertencia si no estamos en Safari en iOS
+        if (isIOS && !isSafari) {
+            alert('Para instalar correctamente la aplicación, por favor abre esta página en Safari.');
+        }
+        
+        // Detectar si la app ya está instalada como PWA
+        if (window.matchMedia('(display-mode: standalone)').matches) {
+            installBanner.style.display = 'none';
+        }
+        
+        // Manejar errores de iframe
+        contentFrame.onerror = function() {
+            document.getElementById('iframeContainer').innerHTML = '<div style="padding: 20px; text-align: center;"><p>No se pudo cargar el contenido. Por favor, inténtalo de nuevo más tarde.</p></div>';
+        };
+    </script>
+</body>
+</html>
