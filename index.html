@@ -1,353 +1,835 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AMBUMAD</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>AMBUMAD</title>
+
+<!-- Meta tags esenciales para PWA en iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AMBUMAD">
+
+<!-- Iconos para iOS - Múltiples tamaños -->
+<link rel="apple-touch-icon" href="https://sjc.microlink.io/EeRMtoDfB9U2eVjv2-2NpVM70mPGOyG-JTudgSrqbrQy7Ux23ZUJa1ll3QvXKKkPgmk2oJYUkbZYwnkKTjjKaQ.jpeg">
+<link rel="apple-touch-icon" sizes="152x152" href="https://sjc.microlink.io/EeRMtoDfB9U2eVjv2-2NpVM70mPGOyG-JTudgSrqbrQy7Ux23ZUJa1ll3QvXKKkPgmk2oJYUkbZYwnkKTjjKaQ.jpeg">
+<link rel="apple-touch-icon" sizes="180x180" href="https://sjc.microlink.io/EeRMtoDfB9U2eVjv2-2NpVM70mPGOyG-JTudgSrqbrQy7Ux23ZUJa1ll3QvXKKkPgmk2oJYUkbZYwnkKTjjKaQ.jpeg">
+<link rel="apple-touch-icon" sizes="167x167" href="https://sjc.microlink.io/EeRMtoDfB9U2eVjv2-2NpVM70mPGOyG-JTudgSrqbrQy7Ux23ZUJa1ll3QvXKKkPgmk2oJYUkbZYwnkKTjjKaQ.jpeg">
+
+<!-- Splash screens para iOS -->
+<link rel="apple-touch-startup-image" media="screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="https://sjc.microlink.io/EeRMtoDfB9U2eVjv2-2NpVM70mPGOyG-JTudgSrqbrQy7Ux23ZUJa1ll3QvXKKkPgmk2oJYUkbZYwnkKTjjKaQ.jpeg">
+<link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" href="https://sjc.microlink.io/EeRMtoDfB9U2eVjv2-2NpVM70mPGOyG-JTudgSrqbrQy7Ux23ZUJa1ll3QvXKKkPgmk2oJYUkbZYwnkKTjjKaQ.jpeg">
+<link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)" href="https://sjc.microlink.io/EeRMtoDfB9U2eVjv2-2NpVM70mPGOyG-JTudgSrqbrQy7Ux23ZUJa1ll3QvXKKkPgmk2oJYUkbZYwnkKTjjKaQ.jpeg">
+<link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" href="https://sjc.microlink.io/EeRMtoDfB9U2eVjv2-2NpVM70mPGOyG-JTudgSrqbrQy7Ux23ZUJa1ll3QvXKKkPgmk2oJYUkbZYwnkKTjjKaQ.jpeg">
+<link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" href="https://sjc.microlink.io/EeRMtoDfB9U2eVjv2-2NpVM70mPGOyG-JTudgSrqbrQy7Ux23ZUJa1ll3QvXKKkPgmk2oJYUkbZYwnkKTjjKaQ.jpeg">
+<link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" href="https://sjc.microlink.io/EeRMtoDfB9U2eVjv2-2NpVM70mPGOyG-JTudgSrqbrQy7Ux23ZUJa1ll3QvXKKkPgmk2oJYUkbZYwnkKTjjKaQ.jpeg">
+<link rel="apple-touch-startup-image" media="screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" href="https://sjc.microlink.io/EeRMtoDfB9U2eVjv2-2NpVM70mPGOyG-JTudgSrqbrQy7Ux23ZUJa1ll3QvXKKkPgmk2oJYUkbZYwnkKTjjKaQ.jpeg">
+<link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" href="https://sjc.microlink.io/EeRMtoDfB9U2eVjv2-2NpVM70mPGOyG-JTudgSrqbrQy7Ux23ZUJa1ll3QvXKKkPgmk2oJYUkbZYwnkKTjjKaQ.jpeg">
+<link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" href="https://sjc.microlink.io/EeRMtoDfB9U2eVjv2-2NpVM70mPGOyG-JTudgSrqbrQy7Ux23ZUJa1ll3QvXKKkPgmk2oJYUkbZYwnkKTjjKaQ.jpeg">
+<link rel="apple-touch-startup-image" media="screen and (device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" href="https://sjc.microlink.io/EeRMtoDfB9U2eVjv2-2NpVM70mPGOyG-JTudgSrqbrQy7Ux23ZUJa1ll3QvXKKkPgmk2oJYUkbZYwnkKTjjKaQ.jpeg">
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="https://sjc.microlink.io/EeRMtoDfB9U2eVjv2-2NpVM70mPGOyG-JTudgSrqbrQy7Ux23ZUJa1ll3QvXKKkPgmk2oJYUkbZYwnkKTjjKaQ.jpeg">
+
+<!-- Manifest para PWA -->
+<link rel="manifest" href="#" id="manifestPlaceholder">
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
     
-    <!-- Meta tags esenciales para PWA en iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="AMBUMAD">
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
     
-    <!-- Iconos para iOS - Múltiples tamaños -->
-    <link rel="apple-touch-icon" href="https://i.ibb.co/23gbx3tw/1000225188.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://i.ibb.co/23gbx3tw/1000225188.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://i.ibb.co/23gbx3tw/1000225188.png">
-    <link rel="apple-touch-icon" sizes="167x167" href="https://i.ibb.co/23gbx3tw/1000225188.png">
+    .content-wrapper {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 80px; /* Espacio para la barra de navegación y copyright */
+    }
     
-    <!-- Splash screens para iOS -->
-    <link rel="apple-touch-startup-image" media="screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="https://i.ibb.co/23gbx3tw/1000225188.png">
-    <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" href="https://i.ibb.co/23gbx3tw/1000225188.png">
-    <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)" href="https://i.ibb.co/23gbx3tw/1000225188.png">
-    <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" href="https://i.ibb.co/23gbx3tw/1000225188.png">
-    <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" href="https://i.ibb.co/23gbx3tw/1000225188.png">
-    <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" href="https://i.ibb.co/23gbx3tw/1000225188.png">
-    <link rel="apple-touch-startup-image" media="screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" href="https://i.ibb.co/23gbx3tw/1000225188.png">
-    <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" href="https://i.ibb.co/23gbx3tw/1000225188.png">
-    <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" href="https://i.ibb.co/23gbx3tw/1000225188.png">
-    <link rel="apple-touch-startup-image" media="screen and (device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" href="https://i.ibb.co/23gbx3tw/1000225188.png">
+    .iframe-container {
+        flex: 1;
+        width: 100%;
+        position: relative;
+        height: calc(100vh - 80px); /* Altura total menos la barra de navegación y copyright */
+    }
     
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="https://i.ibb.co/23gbx3tw/1000225188.png">
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: opacity 0.3s ease;
+    }
     
-    <!-- Manifest para PWA -->
-    <link rel="manifest" href="#" id="manifestPlaceholder">
+    .install-banner {
+        background-color: #fff;
+        padding: 15px;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        position: fixed;
+        bottom: 80px; /* Posicionar encima de la barra de navegación y copyright */
+        left: 0;
+        width: 100%;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
     
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-        
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
-        
-        .loading-logo {
-            width: 120px;
-            height: 120px;
-            animation: pulse 1.5s infinite alternate;
-        }
-        
-        .loading-text {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #e30613;
-            font-weight: bold;
-        }
-        
-        .loading-spinner {
-            margin-top: 20px;
-            width: 40px;
-            height: 40px;
-            border: 4px solid rgba(227, 6, 19, 0.3);
-            border-radius: 50%;
-            border-top-color: #e30613;
-            animation: spin 1s linear infinite;
-        }
-        
-        .header {
-            background-color: #e30613;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .header h1 {
-            font-size: 20px;
-            margin: 0;
-        }
-        
-        .content-wrapper {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .iframe-container {
-            flex: 1;
-            width: 100%;
-            position: relative;
-        }
-        
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        
-        .install-banner {
-            background-color: #fff;
-            padding: 15px;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        .banner-text {
-            flex: 1;
-            font-size: 14px;
-            padding-right: 10px;
-        }
-        
-        .install-btn {
-            background-color: #e30613;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-        
-        .install-instructions {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.8);
-            z-index: 200;
-            display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            overflow-y: auto;
-        }
-        
-        .instructions-content {
-            background-color: white;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 10px;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-        }
-        
-        .close-instructions {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 24px;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .step {
-            margin-bottom: 25px;
-        }
-        
-        .step-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .step-number {
-            background-color: #e30613;
-            color: white;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-            font-size: 14px;
-        }
-        
-        .step-image {
-            width: 100%;
-            max-width: 300px;
-            margin: 10px auto;
-            display: block;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-        
-        .highlight {
-            background-color: #ffecec;
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-weight: bold;
-            color: #e30613;
-        }
-        
-        .show-instructions {
-            display: block;
-            opacity: 1;
-        }
-        
-        footer {
-            background-color: #f0f0f0;
-            padding: 10px;
-            text-align: center;
-            font-size: 12px;
-            color: #666;
-        }
-        
-        /* Animaciones */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        /* Estilos para la pantalla de instalación exitosa */
-        .success-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #fff;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 300;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            background-color: #4CAF50;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        
-        .success-icon svg {
-            width: 40px;
-            height: 40px;
-            stroke: white;
-        }
-        
-        .success-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: #4CAF50;
-        }
-        
-        .success-message {
-            margin-bottom: 30px;
-            font-size: 16px;
-            line-height: 1.5;
-        }
-        
-        .success-btn {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    </style>
+    .banner-text {
+        flex: 1;
+        font-size: 14px;
+        padding-right: 10px;
+    }
+    
+    .install-btn {
+        background-color: #e30613;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+    
+    .install-instructions {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.8);
+        z-index: 200;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        overflow-y: auto;
+    }
+    
+    .instructions-content {
+        background-color: white;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 500px;
+        width: 90%;
+        position: relative;
+    }
+    
+    .close-instructions {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .step {
+        margin-bottom: 25px;
+    }
+    
+    .step-title {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .step-number {
+        background-color: #e30613;
+        color: white;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        font-size: 14px;
+    }
+    
+    .step-image {
+        width: 100%;
+        max-width: 300px;
+        margin: 10px auto;
+        display: block;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
+    
+    .highlight {
+        background-color: #ffecec;
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-weight: bold;
+        color: #e30613;
+    }
+    
+    .show-instructions {
+        display: block;
+        opacity: 1;
+    }
+    
+    .success-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 300;
+        text-align: center;
+        padding: 20px;
+    }
+    
+    .success-icon {
+        width: 80px;
+        height: 80px;
+        background-color: #4CAF50;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+    
+    .success-icon svg {
+        width: 40px;
+        height: 40px;
+        stroke: white;
+    }
+    
+    .success-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #4CAF50;
+    }
+    
+    .success-message {
+        margin-bottom: 30px;
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    
+    .success-btn {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    
+    /* Barra de navegación */
+    .nav-bar {
+        position: fixed;
+        bottom: 20px; /* Ajustado para dejar espacio para el copyright */
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 0;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        z-index: 100;
+    }
+    
+    .nav-button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: #666;
+        transition: all 0.3s ease;
+        padding: 5px 10px;
+        border-radius: 8px;
+        width: 33.33%;
+    }
+    
+    .nav-button.active {
+        color: #e30613;
+        background-color: rgba(227, 6, 19, 0.1);
+    }
+    
+    .nav-icon {
+        font-size: 24px;
+        margin-bottom: 5px;
+        position: relative;
+    }
+    
+    .nav-label {
+        font-size: 12px;
+        font-weight: 500;
+    }
+    
+    /* Icono de cierre de sesión */
+    .logout-icon {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        width: 16px;
+        height: 16px;
+        background-color: #e30613;
+        border-radius: 50%;
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .logout-icon.visible {
+        display: flex;
+    }
+    
+    .logout-icon svg {
+        width: 10px;
+        height: 10px;
+        stroke: white;
+        stroke-width: 3;
+    }
+    
+    /* Botón deshabilitado */
+    .nav-button.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+    
+    /* Tabs content */
+    .tab-content {
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .tab-content.active {
+        display: block;
+        opacity: 1;
+    }
+    
+    /* Animación para cambio de tabs */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .tab-animation {
+        animation: fadeIn 0.3s ease-out forwards;
+    }
+    
+    /* Instrucciones para Android */
+    .platform-tabs {
+        display: flex;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .platform-tab {
+        padding: 10px 15px;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        font-weight: 500;
+    }
+    
+    .platform-tab.active {
+        border-bottom-color: #e30613;
+        color: #e30613;
+    }
+    
+    .platform-content {
+        display: none;
+    }
+    
+    .platform-content.active {
+        display: block;
+    }
+    
+    /* Footer - Ajustado para asegurar visibilidad */
+    footer {
+        background-color: #f0f0f0;
+        padding: 5px;
+        text-align: center;
+        font-size: 12px;
+        color: #666;
+        position: fixed;
+        bottom: 0; /* Posicionado en la parte inferior */
+        left: 0;
+        width: 100%;
+        z-index: 99; /* Por debajo de la barra de navegación */
+        border-top: 1px solid #ddd;
+    }
+    
+    /* Estilos para el formulario de login */
+    .login-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        padding: 20px;
+        background-color: #f5f5f5;
+    }
+    
+    .login-form {
+        width: 100%;
+        max-width: 350px;
+        background-color: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        margin-top: 20px;
+    }
+    
+    .form-title {
+        text-align: center;
+        color: #e30613;
+        margin-bottom: 20px;
+        font-size: 22px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #555;
+    }
+    
+    .form-input {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+    }
+    
+    .form-input:focus {
+        border-color: #e30613;
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(227, 6, 19, 0.1);
+    }
+    
+    .form-checkbox {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    .form-checkbox input {
+        margin-right: 10px;
+    }
+    
+    .login-btn {
+        width: 100%;
+        background-color: #e30613;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .login-btn:hover {
+        background-color: #c50512;
+    }
+    
+    .login-error {
+        color: #e30613;
+        text-align: center;
+        margin-top: 15px;
+        font-size: 14px;
+        display: none;
+    }
+    
+    /* Modal de login */
+    .login-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.8);
+        z-index: 200;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        overflow-y: auto;
+    }
+    
+    .login-modal.show {
+        display: block;
+        opacity: 1;
+    }
+    
+    .login-modal-content {
+        background-color: white;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 400px;
+        width: 90%;
+        position: relative;
+    }
+    
+    .close-login-modal {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+    
+    /* Estilos para el formulario de registro */
+    .register-form {
+        width: 100%;
+        max-width: 350px;
+        background-color: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        margin-top: 20px;
+        display: none;
+    }
+    
+    .register-form.show {
+        display: block;
+    }
+    
+    .register-success {
+        color: #4CAF50;
+        text-align: center;
+        margin-top: 15px;
+        font-size: 14px;
+        display: none;
+    }
+    
+    .register-error {
+        color: #e30613;
+        text-align: center;
+        margin-top: 15px;
+        font-size: 14px;
+        display: none;
+    }
+    
+    .register-btn {
+        background-color: #4285F4;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 15px;
+        display: block;
+        width: 100%;
+    }
+    
+    .toggle-register {
+        text-align: center;
+        margin-top: 20px;
+        color: #4285F4;
+        cursor: pointer;
+        font-weight: 500;
+    }
+    
+    .toggle-register:hover {
+        text-decoration: underline;
+    }
+    
+    .contact-divider {
+        display: flex;
+        align-items: center;
+        margin: 15px 0;
+        color: #666;
+        text-align: center;
+    }
+    
+    .contact-divider::before,
+    .contact-divider::after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .contact-divider::before {
+        margin-right: 10px;
+    }
+    
+    .contact-divider::after {
+        margin-left: 10px;
+    }
+    
+    /* Estilos para el campo de contraseña */
+    .password-container {
+        position: relative;
+    }
+    
+    .toggle-password {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #666;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .toggle-password:focus {
+        outline: none;
+    }
+    
+    /* Mensaje de "Próximamente" */
+    .coming-soon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 150;
+    }
+    
+    .coming-soon h2 {
+        font-size: 28px;
+        color: #e30613;
+        margin-bottom: 10px;
+    }
+    
+    .coming-soon p {
+        font-size: 16px;
+        color: #666;
+    }
+</style>
 </head>
 <body>
-    <!-- Pantalla de carga -->
-    <div class="loading-screen" id="loadingScreen">
-        <img src="https://i.ibb.co/23gbx3tw/1000225188.png" alt="Logo AMBUMAD" class="loading-logo">
-        <div class="loading-text">Cargando AMBUMAD...</div>
-        <div class="loading-spinner"></div>
-    </div>
-    
-    <!-- Cabecera -->
-    <div class="header">
-        <h1>AMBUMAD</h1>
-    </div>
-    
-    <!-- Contenedor principal -->
-    <div class="content-wrapper">
-        <div class="iframe-container" id="iframeContainer">
-            <iframe src="https://animacionccoo.netlify.app/" id="contentFrame" title="AMBUMAD"></iframe>
+<!-- Contenedor principal -->
+<div class="content-wrapper">
+    <div class="iframe-container" id="iframeContainer">
+        <!-- Cada iframe representa un "tab" diferente -->
+        <iframe src="https://menuappamb.netlify.app/" id="ambumadFrame" class="tab-content active" title="AMBUMAD"></iframe>
+        <iframe src="about:blank" id="santaSofiaFrame" class="tab-content" title="Santa Sofia"></iframe>
+        <iframe src="https://turniumccoo.netlify.app/" id="turniumFrame" class="tab-content" title="TURNIUM"></iframe>
+        
+        <!-- Mensaje de "Próximamente" para ciertos usuarios -->
+        <div id="comingSoonMessage" class="coming-soon" style="display: none;">
+            <h2>Próximamente</h2>
+            <p>Esta sección estará disponible pronto.</p>
         </div>
     </div>
-    
-    <!-- Banner de instalación -->
-    <div class="install-banner" id="installBanner">
-        <div class="banner-text">
-            <strong>¡Instala AMBUMAD en tu iPhone!</strong> Accede rápidamente desde tu pantalla de inicio.
-        </div>
-        <button class="install-btn" id="showInstructions">Instalar</button>
-    </div>
-    
-    <!-- Instrucciones de instalación -->
-    <div class="install-instructions" id="installInstructions">
-        <div class="instructions-content">
-            <button class="close-instructions" id="closeInstructions">&times;</button>
-            <h2 style="text-align: center; color: #e30613; margin-bottom: 20px;">Cómo instalar AMBUMAD</h2>
+</div>
+
+<!-- Modal de login -->
+<div class="login-modal" id="loginModal">
+    <div class="login-modal-content">
+        <button class="close-login-modal" id="closeLoginModal">&times;</button>
+        
+        <div class="login-container">
+            <form id="loginForm" class="login-form">
+                <h2 class="form-title">Iniciar Sesión</h2>
+                
+                <div class="form-group">
+                    <label for="username" class="form-label">Usuario</label>
+                    <input type="text" id="username" class="form-input" placeholder="Ingresa tu usuario" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <div class="password-container">
+                        <input type="password" id="password" class="form-input" placeholder="Ingresa tu contraseña" required>
+                        <button type="button" class="toggle-password" id="togglePassword">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="form-checkbox">
+                    <input type="checkbox" id="remember" checked>
+                    <label for="remember">Recordar mis datos</label>
+                </div>
+                
+                <button type="submit" class="login-btn">Iniciar Sesión</button>
+                
+                <div id="loginError" class="login-error">
+                    Usuario o contraseña incorrectos
+                </div>
+                
+                <div class="toggle-register" id="showRegisterForm">
+                    ¿No tienes cuenta? Regístrate aquí
+                </div>
+            </form>
             
+            <!-- Formulario de registro -->
+            <form id="registerForm" class="register-form">
+                <h2 class="form-title">Registro</h2>
+                
+                <div class="form-group">
+                    <label for="regUsername" class="form-label">Usuario</label>
+                    <input type="text" id="regUsername" class="form-input" placeholder="Elige un nombre de usuario" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="regPassword" class="form-label">Contraseña</label>
+                    <div class="password-container">
+                        <input type="password" id="regPassword" class="form-input" placeholder="Elige una contraseña" required>
+                        <button type="button" class="toggle-password" id="toggleRegPassword">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="regName" class="form-label">Nombre y apellido</label>
+                    <input type="text" id="regName" class="form-input" placeholder="Tu nombre completo" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="regCompany" class="form-label">Empresa</label>
+                    <input type="text" id="regCompany" class="form-input" placeholder="Nombre de tu empresa" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="regEmployeeNumber" class="form-label">Número de trabajador</label>
+                    <input type="text" id="regEmployeeNumber" class="form-input" placeholder="Tu número de trabajador" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="regWorkZone" class="form-label">Zona de trabajo o Lote</label>
+                    <input type="text" id="regWorkZone" class="form-input" placeholder="Tu zona de trabajo o lote" required>
+                </div>
+                
+                <div class="form-checkbox">
+                    <input type="checkbox" id="regTerms" required>
+                    <label for="regTerms">Acepto los términos y condiciones</label>
+                </div>
+                
+                <button type="submit" class="login-btn">Registrarme</button>
+                
+                <div id="registerSuccess" class="register-success">
+                    Registro completado. Se ha enviado un email con tus datos.
+                </div>
+                
+                <div id="registerError" class="register-error">
+                    Error al procesar el registro. Por favor, inténtalo de nuevo.
+                </div>
+                
+                <div class="toggle-register" id="showLoginForm">
+                    ¿Ya tienes cuenta? Inicia sesión aquí
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Barra de navegación -->
+<nav class="nav-bar">
+    <a href="#" class="nav-button active" id="ambumadBtn" data-tab="ambumadFrame">
+        <div class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+        </div>
+        <span class="nav-label">AMBUMAD</span>
+    </a>
+    <a href="#" class="nav-button" id="usuarioBtn" data-tab="santaSofiaFrame">
+        <div class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <div class="logout-icon" id="logoutIcon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </div>
+        </div>
+        <span class="nav-label" id="userLabel">USUARIO</span>
+    </a>
+    <a href="#" class="nav-button disabled" id="turniumBtn" data-tab="turniumFrame">
+        <div class="nav-icon">
+            <!-- Icono de calendario para Turnium -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+        </div>
+        <span class="nav-label">TURNIUM</span>
+    </a>
+</nav>
+
+<!-- Footer - Reposicionado para estar debajo de los botones -->
+<footer id="mainFooter">
+    &copy; 2025 Carlos AGP - Todos los derechos reservados
+</footer>
+
+<!-- Banner de instalación -->
+<div class="install-banner" id="installBanner">
+    <div class="banner-text">
+        <strong>¡Instala AMBUMAD!</strong> Accede rápidamente desde tu pantalla de inicio.
+    </div>
+    <button class="install-btn" id="showInstructions">Instalar</button>
+</div>
+
+<!-- Instrucciones de instalación -->
+<div class="install-instructions" id="installInstructions">
+    <div class="instructions-content">
+        <button class="close-instructions" id="closeInstructions">&times;</button>
+        <h2 style="text-align: center; color: #e30613; margin-bottom: 20px;">Cómo instalar AMBUMAD</h2>
+        
+        <!-- Pestañas para seleccionar la plataforma -->
+        <div class="platform-tabs">
+            <div class="platform-tab active" data-platform="ios">iPhone (iOS)</div>
+            <div class="platform-tab" data-platform="android">Android</div>
+        </div>
+        
+        <!-- Instrucciones para iOS -->
+        <div class="platform-content active" id="ios-instructions">
             <div class="step">
                 <div class="step-title">
                     <span class="step-number">1</span>
@@ -391,139 +873,592 @@
                     </svg>
                 </div>
             </div>
+        </div>
+        
+        <!-- Instrucciones para Android -->
+        <div class="platform-content" id="android-instructions">
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">1</span>
+                    Toca el menú <span class="highlight">Tres puntos</span>
+                </div>
+                <p>Pulsa el botón de menú (tres puntos verticales) en la esquina superior derecha de Chrome</p>
+                <div style="text-align: center; margin: 15px 0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#e30613" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <circle cx="12" cy="5" r="1"></circle>
+                        <circle cx="12" cy="19" r="1"></circle>
+                    </svg>
+                </div>
+            </div>
             
             <div class="step">
                 <div class="step-title">
-                    <span class="step-number">4</span>
-                    ¡Listo!
+                    <span class="step-number">2</span>
+                    Selecciona <span class="highlight">Añadir a pantalla de inicio</span>
                 </div>
-                <p>Ahora encontrarás el icono de AMBUMAD en tu pantalla de inicio</p>
-                <button class="install-btn" id="markAsInstalled" style="width: 100%; margin-top: 15px;">
-                    He completado la instalación
-                </button>
+                <p>Busca esta opción en el menú desplegado</p>
+                <div style="text-align: center; margin: 15px 0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#e30613" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                        <line x1="6" y1="1" x2="6" y2="4"></line>
+                        <line x1="10" y1="1" x2="10" y2="4"></line>
+                        <line x1="14" y1="1" x2="14" y2="4"></line>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-title">
+                    <span class="step-number">3</span>
+                    Pulsa <span class="highlight">Instalar</span> o <span class="highlight">Añadir</span>
+                </div>
+                <p>Confirma la instalación en el diálogo que aparece</p>
+                <div style="text-align: center; margin: 15px 0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#e30613" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <!-- Pantalla de instalación exitosa -->
-    <div class="success-screen" id="successScreen">
-        <div class="success-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
+        
+        <div class="step">
+            <div class="step-title">
+                <span class="step-number">4</span>
+                ¡Listo!
+            </div>
+            <p>Ahora encontrarás el icono de AMBUMAD en tu pantalla de inicio</p>
+            <button class="install-btn" id="markAsInstalled" style="width: 100%; margin-top: 15px;">
+                He completado la instalación
+            </button>
         </div>
-        <div class="success-title">¡Instalación completada!</div>
-        <div class="success-message">
-            AMBUMAD ha sido añadida a tu pantalla de inicio.<br>
-            Ahora puedes acceder rápidamente a toda la información sindical.
-        </div>
-        <button class="success-btn" id="closeSuccess">Continuar</button>
     </div>
-    
-    <footer>
-        &copy; 2025 Carlos AGP - Todos los derechos reservados
-    </footer>
+</div>
 
-    <script>
-        // Crear el contenido del manifest dinámicamente
-        const manifestContent = {
-            "name": "AMBUMAD",
-            "short_name": "AMBUMAD",
-            "description": "Aplicación de AMBUMAD con información sindical",
-            "start_url": "./",
-            "display": "standalone",
-            "background_color": "#ffffff",
-            "theme_color": "#e30613",
-            "icons": [
-                {
-                    "src": "https://i.ibb.co/23gbx3tw/1000225188.png",
-                    "sizes": "192x192",
-                    "type": "image/png"
-                },
-                {
-                    "src": "https://i.ibb.co/23gbx3tw/1000225188.png",
-                    "sizes": "512x512",
-                    "type": "image/png"
-                }
-            ]
-        };
+<!-- Pantalla de instalación exitosa -->
+<div class="success-screen" id="successScreen">
+    <div class="success-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+    </div>
+    <div class="success-title">¡Instalación completada!</div>
+    <div class="success-message">
+        AMBUMAD ha sido añadida a tu pantalla de inicio.<br>
+        Ahora puedes acceder rápidamente a toda la información sindical.
+    </div>
+    <button class="success-btn" id="closeSuccess">Continuar</button>
+</div>
+
+<script>
+    // Crear el contenido del manifest dinámicamente
+    const manifestContent = {
+        "name": "AMBUMAD",
+        "short_name": "AMBUMAD",
+        "description": "Aplicación de AMBUMAD con información sindical",
+        "start_url": "./",
+        "display": "standalone",
+        "background_color": "#ffffff",
+        "theme_color": "#e30613",
+        "icons": [
+            {
+                "src": "https://sjc.microlink.io/EeRMtoDfB9U2eVjv2-2NpVM70mPGOyG-JTudgSrqbrQy7Ux23ZUJa1ll3QvXKKkPgmk2oJYUkbZYwnkKTjjKaQ.jpeg",
+                "sizes": "192x192",
+                "type": "image/png"
+            },
+            {
+                "src": "https://sjc.microlink.io/EeRMtoDfB9U2eVjv2-2NpVM70mPGOyG-JTudgSrqbrQy7Ux23ZUJa1ll3QvXKKkPgmk2oJYUkbZYwnkKTjjKaQ.jpeg",
+                "sizes": "512x512",
+                "type": "image/png"
+            }
+        ]
+    };
+    
+    // Crear un Blob con el contenido del manifest
+    const manifestBlob = new Blob([JSON.stringify(manifestContent)], {type: 'application/json'});
+    const manifestURL = URL.createObjectURL(manifestBlob);
+    
+    // Asignar la URL del Blob al enlace del manifest
+    document.getElementById('manifestPlaceholder').href = manifestURL;
+    
+    // Referencias a elementos del DOM
+    const installBanner = document.getElementById('installBanner');
+    const showInstructions = document.getElementById('showInstructions');
+    const installInstructions = document.getElementById('installInstructions');
+    const closeInstructions = document.getElementById('closeInstructions');
+    const markAsInstalled = document.getElementById('markAsInstalled');
+    const successScreen = document.getElementById('successScreen');
+    const closeSuccess = document.getElementById('closeSuccess');
+    
+    // Referencias a las pestañas de la plataforma
+    const platformTabs = document.querySelectorAll('.platform-tab');
+    const platformContents = document.querySelectorAll('.platform-content');
+    
+    // Referencias a los botones de navegación
+    const navButtons = document.querySelectorAll('.nav-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+    
+    // Referencias a elementos del formulario de login
+    const loginModal = document.getElementById('loginModal');
+    const closeLoginModal = document.getElementById('closeLoginModal');
+    const loginForm = document.getElementById('loginForm');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const togglePassword = document.getElementById('togglePassword');
+    const rememberCheckbox = document.getElementById('remember');
+    const loginError = document.getElementById('loginError');
+    const logoutIcon = document.getElementById('logoutIcon');
+    const userLabel = document.getElementById('userLabel');
+    const usuarioBtn = document.getElementById('usuarioBtn');
+    const santaSofiaFrame = document.getElementById('santaSofiaFrame');
+    const turniumBtn = document.getElementById('turniumBtn');
+    const comingSoonMessage = document.getElementById('comingSoonMessage');
+    
+    // Referencias a elementos del formulario de registro
+    const registerForm = document.getElementById('registerForm');
+    const showRegisterForm = document.getElementById('showRegisterForm');
+    const showLoginForm = document.getElementById('showLoginForm');
+    const registerSuccess = document.getElementById('registerSuccess');
+    const registerError = document.getElementById('registerError');
+    const regPasswordInput = document.getElementById('regPassword');
+    const toggleRegPassword = document.getElementById('toggleRegPassword');
+    
+    // Variables para el estado de login
+    let isLoggedIn = false;
+    let currentUser = null;
+    
+    // Definir usuarios válidos
+    const validUsers = [
+        { username: "Santa Sofia", password: "Santa Sofia", displayName: "SANTA SOFIA", type: "santasofia" },
+        { username: "Sanir", password: "Sanir", displayName: "SANIR", type: "comingsoon" },
+        { username: "Sasu", password: "Sasu", displayName: "SASU", type: "comingsoon" },
+        { username: "UTE Sanir", password: "UTE Sanir", displayName: "UTE SANIR", type: "comingsoon" },
+        { username: "Invitado", password: "Invitado", displayName: "INVITADO", type: "comingsoon" },
+        { username: "Jose Aurelio", password: "13", displayName: "DELEGADO", type: "delegado" },
+        { username: "Karolo", password: "138", displayName: "DELEGADO", type: "delegado" },
+        { username: "Santiago", password: "306", displayName: "DELEGADO", type: "delegado" }
+    ];
+    
+    // Mostrar/ocultar contraseña en el formulario de login
+    togglePassword.addEventListener('click', function() {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
         
-        // Crear un Blob con el contenido del manifest
-        const manifestBlob = new Blob([JSON.stringify(manifestContent)], {type: 'application/json'});
-        const manifestURL = URL.createObjectURL(manifestBlob);
+        // Cambiar el icono según el estado
+        if (type === 'text') {
+            this.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>
+            `;
+        } else {
+            this.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+            `;
+        }
+    });
+    
+    // Mostrar/ocultar contraseña en el formulario de registro
+    toggleRegPassword.addEventListener('click', function() {
+        const type = regPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        regPasswordInput.setAttribute('type', type);
         
-        // Asignar la URL del Blob al enlace del manifest
-        document.getElementById('manifestPlaceholder').href = manifestURL;
+        // Cambiar el icono según el estado
+        if (type === 'text') {
+            this.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>
+            `;
+        } else {
+            this.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+            `;
+        }
+    });
+    
+    // Mostrar/ocultar formulario de registro
+    showRegisterForm.addEventListener('click', function() {
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'block';
+    });
+    
+    // Mostrar/ocultar formulario de login
+    showLoginForm.addEventListener('click', function() {
+        registerForm.style.display = 'none';
+        loginForm.style.display = 'block';
+    });
+    
+    // Manejar envío del formulario de registro
+    registerForm.addEventListener('submit', function(e) {
+        e.preventDefault();
         
-        // Referencias a elementos del DOM
-        const loadingScreen = document.getElementById('loadingScreen');
-        const installBanner = document.getElementById('installBanner');
-        const showInstructions = document.getElementById('showInstructions');
-        const installInstructions = document.getElementById('installInstructions');
-        const closeInstructions = document.getElementById('closeInstructions');
-        const markAsInstalled = document.getElementById('markAsInstalled');
-        const successScreen = document.getElementById('successScreen');
-        const closeSuccess = document.getElementById('closeSuccess');
-        const contentFrame = document.getElementById('contentFrame');
+        // Recopilar datos del formulario
+        const username = document.getElementById('regUsername').value;
+        const password = document.getElementById('regPassword').value;
+        const name = document.getElementById('regName').value;
+        const company = document.getElementById('regCompany').value;
+        const employeeNumber = document.getElementById('regEmployeeNumber').value;
+        const workZone = document.getElementById('regWorkZone').value;
         
-        // Simular carga y ocultar pantalla de carga
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                loadingScreen.style.opacity = '0';
-                setTimeout(function() {
-                    loadingScreen.style.display = 'none';
-                }, 500);
-            }, 1500);
-        });
+        // Generar el enlace mailto con los datos del formulario
+        const subject = encodeURIComponent(`${name} - Nuevo registro en Ambumad`);
+        const body = encodeURIComponent(
+            `Datos del nuevo registro:\n\n` +
+            `Usuario: ${username}\n` +
+            `Contraseña: ${password}\n` +
+            `Nombre y apellido: ${name}\n` +
+            `Empresa: ${company}\n` +
+            `Número de trabajador: ${employeeNumber}\n` +
+            `Zona de trabajo o Lote: ${workZone}\n\n` +
+            `Fecha de registro: ${new Date().toLocaleString()}`
+        );
         
-        // Mostrar instrucciones de instalación
-        showInstructions.addEventListener('click', function() {
-            installInstructions.classList.add('show-instructions');
-        });
+        // Abrir el cliente de correo con los datos
+        window.location.href = `mailto:ambumadapp@gmail.com?subject=${subject}&body=${body}`;
         
-        // Cerrar instrucciones
-        closeInstructions.addEventListener('click', function() {
-            installInstructions.classList.remove('show-instructions');
-        });
+        // Mostrar mensaje de éxito
+        registerSuccess.style.display = 'block';
+        registerError.style.display = 'none';
         
-        // Marcar como instalado
-        markAsInstalled.addEventListener('click', function() {
-            installInstructions.classList.remove('show-instructions');
-            successScreen.style.display = 'flex';
-            installBanner.style.display = 'none';
+        // Limpiar campos
+        document.getElementById('regUsername').value = '';
+        document.getElementById('regPassword').value = '';
+        document.getElementById('regName').value = '';
+        document.getElementById('regCompany').value = '';
+        document.getElementById('regEmployeeNumber').value = '';
+        document.getElementById('regWorkZone').value = '';
+        document.getElementById('regTerms').checked = false;
+        
+        // Ocultar mensaje después de 3 segundos
+        setTimeout(() => {
+            registerSuccess.style.display = 'none';
+            registerForm.style.display = 'none';
+            loginForm.style.display = 'block';
+        }, 3000);
+    });
+    
+    // Función para cambiar entre las pestañas de plataforma
+    platformTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            // Desactivar todas las pestañas
+            platformTabs.forEach(t => t.classList.remove('active'));
+            platformContents.forEach(c => c.classList.remove('active'));
             
-            // Guardar en localStorage que la app ha sido instalada
-            localStorage.setItem('ambumadInstalled', 'true');
+            // Activar la pestaña seleccionada
+            this.classList.add('active');
+            const platform = this.getAttribute('data-platform');
+            document.getElementById(`${platform}-instructions`).classList.add('active');
+        });
+    });
+    
+    // Función para cambiar entre las pestañas de navegación
+    navButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Si el botón está deshabilitado, no hacer nada
+            if (this.classList.contains('disabled')) {
+                return;
+            }
+            
+            // Si es el botón de usuario y no está logueado, mostrar modal de login
+            if (this.id === 'usuarioBtn' && !isLoggedIn) {
+                loginModal.classList.add('show');
+                return;
+            }
+            
+            // Si es el botón de usuario y está logueado, alternar entre login/logout
+            if (this.id === 'usuarioBtn' && isLoggedIn) {
+                // Si ya está en la pestaña de Usuario, hacer logout
+                if (santaSofiaFrame.classList.contains('active')) {
+                    logout();
+                    return;
+                }
+            }
+            
+            // Desactivar todos los botones y contenidos
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+                content.classList.remove('tab-animation');
+            });
+            
+            // Activar el botón y contenido seleccionado
+            this.classList.add('active');
+            const tabId = this.getAttribute('data-tab');
+            const targetTab = document.getElementById(tabId);
+            
+            // Ocultar mensaje de "Próximamente"
+            comingSoonMessage.style.display = 'none';
+            
+            // Si el usuario está logueado y selecciona la pestaña de usuario
+            if (isLoggedIn && tabId === 'santaSofiaFrame') {
+                // Mostrar contenido según el tipo de usuario
+                if (currentUser.type === 'comingsoon') {
+                    comingSoonMessage.style.display = 'flex';
+                } else if (currentUser.type === 'delegado') {
+                    santaSofiaFrame.src = 'https://delegadosantasofia.netlify.app/';
+                } else if (currentUser.type === 'santasofia') {
+                    santaSofiaFrame.src = 'https://appmenusantasofia.netlify.app/';
+                }
+            }
+            
+            // Añadir animación
+            targetTab.classList.add('active');
+            setTimeout(() => {
+                targetTab.classList.add('tab-animation');
+            }, 10);
+        });
+    });
+    
+    // Cerrar modal de login
+    closeLoginModal.addEventListener('click', function() {
+        loginModal.classList.remove('show');
+    });
+    
+    // Manejar el envío del formulario de login
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value.trim();
+        
+        // Verificar credenciales
+        const user = validUsers.find(u => u.username === username && u.password === password);
+        
+        if (user) {
+            // Credenciales correctas
+            loginSuccess(user);
+        } else {
+            // Credenciales incorrectas
+            loginError.style.display = 'block';
+            passwordInput.value = '';
+            passwordInput.focus();
+        }
+    });
+    
+    // Función para manejar el inicio de sesión exitoso
+    function loginSuccess(user) {
+        // Cerrar modal
+        loginModal.classList.remove('show');
+        
+        // Actualizar estado de login
+        isLoggedIn = true;
+        currentUser = user;
+        
+        // Mostrar icono de cierre de sesión
+        logoutIcon.classList.add('visible');
+        
+        // Cambiar el texto del botón a la etiqueta del usuario
+        userLabel.textContent = user.displayName;
+        
+        // Habilitar el botón de Turnium
+        turniumBtn.classList.remove('disabled');
+        
+        // Cargar la página correspondiente según el tipo de usuario
+        if (user.type === 'santasofia') {
+            santaSofiaFrame.src = 'https://appmenusantasofia.netlify.app/';
+        } else if (user.type === 'delegado') {
+            santaSofiaFrame.src = 'https://delegadosantasofia.netlify.app/';
+        } else {
+            santaSofiaFrame.src = 'about:blank';
+        }
+        
+        // Activar la pestaña de Usuario
+        navButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => {
+            content.classList.remove('active');
+            content.classList.remove('tab-animation');
         });
         
-        // Cerrar pantalla de éxito
-        closeSuccess.addEventListener('click', function() {
-            successScreen.style.display = 'none';
+        usuarioBtn.classList.add('active');
+        santaSofiaFrame.classList.add('active');
+        
+        // Mostrar mensaje de "Próximamente" para usuarios específicos
+        if (user.type === 'comingsoon') {
+            comingSoonMessage.style.display = 'flex';
+        }
+        
+        setTimeout(() => {
+            santaSofiaFrame.classList.add('tab-animation');
+        }, 10);
+        
+        // Si el checkbox está marcado, guardar credenciales
+        if (rememberCheckbox.checked) {
+            localStorage.setItem('ambumadUsername', username);
+            localStorage.setItem('ambumadPassword', password);
+            localStorage.setItem('ambumadLoggedIn', 'true');
+            localStorage.setItem('ambumadUserType', user.type);
+            localStorage.setItem('ambumadDisplayName', user.displayName);
+        }
+        
+        // Limpiar campos
+        loginError.style.display = 'none';
+    }
+    
+    // Función para cerrar sesión
+    function logout() {
+        // Actualizar estado de login
+        isLoggedIn = false;
+        currentUser = null;
+        
+        // Ocultar icono de cierre de sesión
+        logoutIcon.classList.remove('visible');
+        
+        // Restaurar el texto del botón a "USUARIO"
+        userLabel.textContent = "USUARIO";
+        
+        // Deshabilitar el botón de Turnium
+        turniumBtn.classList.add('disabled');
+        
+        // Limpiar iframe
+        santaSofiaFrame.src = 'about:blank';
+        
+        // Ocultar mensaje de "Próximamente"
+        comingSoonMessage.style.display = 'none';
+        
+        // Cambiar a la pestaña AMBUMAD
+        navButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => {
+            content.classList.remove('active');
+            content.classList.remove('tab-animation');
         });
         
-        // Comprobar si la app ya ha sido instalada
-        if (localStorage.getItem('ambumadInstalled') === 'true') {
-            installBanner.style.display = 'none';
+        document.getElementById('ambumadBtn').classList.add('active');
+        document.getElementById('ambumadFrame').classList.add('active');
+        setTimeout(() => {
+            document.getElementById('ambumadFrame').classList.add('tab-animation');
+        }, 10);
+        
+        // Eliminar credenciales guardadas
+        localStorage.removeItem('ambumadUsername');
+        localStorage.removeItem('ambumadPassword');
+        localStorage.removeItem('ambumadLoggedIn');
+        localStorage.removeItem('ambumadUserType');
+        localStorage.removeItem('ambumadDisplayName');
+    }
+    
+    // Función para comprobar si hay credenciales guardadas
+    function checkSavedCredentials() {
+        const savedUsername = localStorage.getItem('ambumadUsername');
+        const savedPassword = localStorage.getItem('ambumadPassword');
+        const isAutoLoggedIn = localStorage.getItem('ambumadLoggedIn');
+        const savedUserType = localStorage.getItem('ambumadUserType');
+        const savedDisplayName = localStorage.getItem('ambumadDisplayName');
+        
+        if (savedUsername && savedPassword && isAutoLoggedIn === 'true' && savedUserType && savedDisplayName) {
+            // Crear objeto de usuario
+            const user = {
+                username: savedUsername,
+                password: savedPassword,
+                type: savedUserType,
+                displayName: savedDisplayName
+            };
+            
+            // Auto-login con credenciales guardadas
+            isLoggedIn = true;
+            currentUser = user;
+            
+            // Mostrar icono de cierre de sesión
+            logoutIcon.classList.add('visible');
+            
+            // Cambiar el texto del botón a la etiqueta del usuario
+            userLabel.textContent = user.displayName;
+            
+            // Habilitar el botón de Turnium
+            turniumBtn.classList.remove('disabled');
+            
+            // Precargar la página correspondiente
+            if (user.type === 'santasofia') {
+                santaSofiaFrame.src = 'https://appmenusantasofia.netlify.app/';
+            } else if (user.type === 'delegado') {
+                santaSofiaFrame.src = 'https://delegadosantasofia.netlify.app/';
+            }
         }
+    }
+    
+    // Mostrar instrucciones de instalación
+    showInstructions.addEventListener('click', function() {
+        installInstructions.classList.add('show-instructions');
+    });
+    
+    // Cerrar instrucciones
+    closeInstructions.addEventListener('click', function() {
+        installInstructions.classList.remove('show-instructions');
+    });
+    
+    // Marcar como instalado
+    markAsInstalled.addEventListener('click', function() {
+        installInstructions.classList.remove('show-instructions');
+        successScreen.style.display = 'flex';
+        installBanner.style.display = 'none';
         
-        // Detectar si estamos en iOS y en Safari
-        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-        
-        // Mostrar advertencia si no estamos en Safari en iOS
-        if (isIOS && !isSafari) {
-            alert('Para instalar correctamente la aplicación, por favor abre esta página en Safari.');
+        // Guardar en localStorage que la app ha sido instalada
+        localStorage.setItem('ambumadInstalled', 'true');
+    });
+    
+    // Cerrar pantalla de éxito
+    closeSuccess.addEventListener('click', function() {
+        successScreen.style.display = 'none';
+    });
+    
+    // Comprobar si la app ya ha sido instalada
+    if (localStorage.getItem('ambumadInstalled') === 'true') {
+        installBanner.style.display = 'none';
+    }
+    
+    // Detectar si estamos en iOS y en Safari
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    
+    // Mostrar advertencia si no estamos en Safari en iOS
+    if (isIOS && !isSafari) {
+        alert('Para instalar correctamente la aplicación, por favor abre esta página en Safari.');
+    }
+    
+    // Detectar si la app ya está instalada como PWA
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+        installBanner.style.display = 'none';
+    }
+    
+    // Función para precargar los iframes cuando se cambia de pestaña
+    function preloadIframe(iframeId, url) {
+        const iframe = document.getElementById(iframeId);
+        if (iframe && iframe.src === 'about:blank' && url !== 'about:blank') {
+            iframe.src = url;
         }
+    }
+
+    // Precargar el iframe de TURNIUM después de cargar la página principal
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            if (isLoggedIn) {
+                preloadIframe('turniumFrame', 'https://turniumccoo.netlify.app/');
+            }
+        }, 3000); // Retrasar la carga para no afectar el rendimiento inicial
         
-        // Detectar si la app ya está instalada como PWA
-        if (window.matchMedia('(display-mode: standalone)').matches) {
-            installBanner.style.display = 'none';
+        // Comprobar si hay credenciales guardadas
+        checkSavedCredentials();
+        
+        // Asegurar que el footer sea visible
+        document.getElementById('mainFooter').style.display = 'block';
+        
+        // Deshabilitar el botón de Turnium inicialmente si no hay usuario logueado
+        if (!isLoggedIn) {
+            turniumBtn.classList.add('disabled');
         }
-        
-        // Manejar errores de iframe
-        contentFrame.onerror = function() {
-            document.getElementById('iframeContainer').innerHTML = '<div style="padding: 20px; text-align: center;"><p>No se pudo cargar el contenido. Por favor, inténtalo de nuevo más tarde.</p></div>';
-        };
-    </script>
+    });
+</script>
 </body>
 </html>
