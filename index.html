@@ -1017,7 +1017,7 @@ let currentUser = null;
 
 // Definir usuarios válidos - FORMATO SIMPLIFICADO PARA FÁCIL EDICIÓN
 // Formato: [usuario, contraseña, nombre a mostrar, tipo]
-// Tipos: "santasofia", "comingsoon", "delegado"
+// Tipos: "santasofia", "comingsoon", "delegado", "delegado-tenorio", "delegado-sanir"
 const usersList = [
     // Usuario Santa Sofia
     ["SantaSofia", "SantaSofia", "SANTA SOFIA", "santasofia"],
@@ -1033,11 +1033,18 @@ const usersList = [
     // Delegados Santa Sofia
     ["Jose Aurelio", "13", "DELEGADO", "delegado"],
     ["Karolo", "138", "DELEGADO", "delegado"],
-    ["Santiago", "306", "DELEGADO", "delegado"]
+    ["Santiago", "306", "DELEGADO", "delegado"],
+    
+    // NUEVOS USUARIOS DELEGADOS
+    // Delegado Tenorio
+    ["karolo", "gamer", "DELEGADO", "delegado-tenorio"],
+    
+    // Delegado SANIR
+    ["gamer", "karolo", "DELEGADO", "delegado-sanir"]
     
     // Para añadir más usuarios, simplemente agrega nuevas líneas siguiendo el formato:
     // ["Nombre de usuario", "Contraseña", "NOMBRE A MOSTRAR", "tipo"],
-    // Donde tipo puede ser: "santasofia", "comingsoon" o "delegado"
+    // Donde tipo puede ser: "santasofia", "comingsoon", "delegado", "delegado-tenorio", "delegado-sanir"
 ];
 
 // Convertir la lista de usuarios a objetos para facilitar su uso
@@ -1215,6 +1222,10 @@ navButtons.forEach(button => {
                 comingSoonMessage.style.display = 'flex';
             } else if (currentUser.type === 'delegado') {
                 santaSofiaFrame.src = 'https://delegadosantasofia.netlify.app/';
+            } else if (currentUser.type === 'delegado-tenorio') {
+                santaSofiaFrame.src = 'https://delegadotenorioccoo.netlify.app/';
+            } else if (currentUser.type === 'delegado-sanir') {
+                santaSofiaFrame.src = 'https://delegadosanirccoo.netlify.app/';
             } else if (currentUser.type === 'santasofia') {
                 santaSofiaFrame.src = 'https://appmenusantasofia.netlify.app/';
             }
@@ -1274,6 +1285,10 @@ function loginSuccess(user) {
         santaSofiaFrame.src = 'https://appmenusantasofia.netlify.app/';
     } else if (user.type === 'delegado') {
         santaSofiaFrame.src = 'https://delegadosantasofia.netlify.app/';
+    } else if (user.type === 'delegado-tenorio') {
+        santaSofiaFrame.src = 'https://delegadotenorioccoo.netlify.app/';
+    } else if (user.type === 'delegado-sanir') {
+        santaSofiaFrame.src = 'https://delegadosanirccoo.netlify.app/';
     } else {
         santaSofiaFrame.src = 'about:blank';
     }
@@ -1378,6 +1393,10 @@ function checkSavedCredentials() {
             santaSofiaFrame.src = 'https://appmenusantasofia.netlify.app/';
         } else if (user.type === 'delegado') {
             santaSofiaFrame.src = 'https://delegadosantasofia.netlify.app/';
+        } else if (user.type === 'delegado-tenorio') {
+            santaSofiaFrame.src = 'https://delegadotenorioccoo.netlify.app/';
+        } else if (user.type === 'delegado-sanir') {
+            santaSofiaFrame.src = 'https://delegadosanirccoo.netlify.app/';
         }
     }
 }
